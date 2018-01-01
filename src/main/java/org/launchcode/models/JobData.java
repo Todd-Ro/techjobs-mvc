@@ -78,11 +78,12 @@ public class JobData {
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
-
-            String aValue = row.get(column);
+            //Each HashMap we iterate over is one job
+            String aValue = row.get(column); // Gets this job's value in the specified column
 
             if (aValue != null && aValue.toLowerCase().contains(value.toLowerCase())) {
-                jobs.add(row);
+                jobs.add(row); //Adds the whole HashMap (AKA row) representing the job ...
+                                // ... if the specified column for that job contains the search value
             }
         }
 

@@ -27,5 +27,15 @@
         </div>
     </div>
 
+    <p th:fragment="jobListDisplay">
+        <table th:each="jobHashMap : ${resultJobsArrayList}" class="job-listing">
+            <tr th:each="rowPair : ${jobHashMap}">
+                <td th:text="${rowPair.key}">Column Header</td>
+                <td th:text="${rowPair.value}">Field Applicable to Job</td>
+            </tr>
+        </table>
+        <br />
+    </p>
+
 </body>
 </html>
