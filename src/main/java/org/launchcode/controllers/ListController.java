@@ -42,12 +42,14 @@ public class ListController {
             model.addAttribute("title", "All Jobs");
             model.addAttribute("jobs", jobs);
             model.addAttribute("resultJobsArrayList", jobs);
+            model.addAttribute("resultCount", jobs.size());
             return "list-jobs";
         } else {
             ArrayList<String> items = JobData.findAll(column);
             model.addAttribute("title", "All " + columnChoices.get(column) + " Values");
             model.addAttribute("column", column);
             model.addAttribute("items", items);
+            model.addAttribute("resultCount", items.size());
             return "list-column";
         }
 
@@ -61,6 +63,7 @@ public class ListController {
         model.addAttribute("title", "Jobs with " + columnChoices.get(column) + ": " + value);
         model.addAttribute("jobs", jobs);
         model.addAttribute("resultJobsArrayList", jobs);
+        model.addAttribute("resultCount", jobs.size());
         return "list-jobs";
     }
 }

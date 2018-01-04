@@ -10,6 +10,7 @@
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
+
     <form th:action="@{/search/results}">
         <h2>Search by:</h2>
 
@@ -37,7 +38,7 @@
     <hr />
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
-
+    <h2 th:text="${resultCount} + ' results'"></h2>
     <p th:replace="fragments :: jobListDisplay">
     </p>
 

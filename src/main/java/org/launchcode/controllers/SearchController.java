@@ -58,7 +58,9 @@ public class SearchController {
         if (searchType.equals("all")) {
             boolean allSearch = true;
             model.addAttribute("allSearchStatus", allSearch);
-            model.addAttribute("resultJobsArrayList",JobData.findByValue(searchTerm));
+            ArrayList<HashMap<String, String>> results = JobData.findByValue(searchTerm);
+            model.addAttribute("resultJobsArrayList", results);
+            model.addAttribute("resultCount", results.size());
         }
         else if (searchType.equals("core competency") || searchType.equals("employer") || searchType.equals("location")
                                                                     || searchType.equals("position type")) {
@@ -66,12 +68,12 @@ public class SearchController {
             model.addAttribute("specificStatus", specificColumn);
             ArrayList<HashMap<String, String>> results = JobData.findByColumnAndValue(searchType, searchTerm);
             model.addAttribute("resultJobsArrayList", results);
+            model.addAttribute("resultCount", results.size());
         }
         else {
             boolean problem = true;
             model.addAttribute("problemStatus", problem);
         }
-
 
         model.addAttribute("columns", ListController.columnChoices); //columnChoices is a HashMap
         return "search";
