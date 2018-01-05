@@ -38,7 +38,7 @@
     <hr />
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
-    <h2 th:text="${resultCount} + ' results'"></h2>
+    <h2  th:if="${resultCount != null}" th:text="${resultCount} + ' results'"></h2>
     <p th:replace="fragments :: jobListDisplay">
     </p>
 
